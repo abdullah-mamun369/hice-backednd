@@ -1,11 +1,34 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+import cookieParser from "cookie-parser";
+import express, {
+  Application,
+  Request,
+  Response,
+  ErrorRequestHandler,
+} from "express";
+import cors from "cors";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import notFound from "./app/middlewares/notFound";
+import router from "./app/routes";
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const app: Application = express();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+//parsers
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
+// application routes
+app.use("/api/v1", router);
+
+const test = (req: Request, res: Response) => {
+  const a = "Api Running";
+  res.send(a);
+};
+
+app.get("/", test);
+
+app.use(globalErrorHandler as unknown as ErrorRequestHandler);
+
+app.use(notFound as unknown as express.RequestHandler);
+
+export default app;
