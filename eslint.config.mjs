@@ -26,15 +26,10 @@ export default defineConfig([
     rules: {
       eqeqeq: "off",
       "no-unused-vars": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^next$" }, // Ignore `next` in middleware
-      ],
       "prefer-const": ["error", { ignoreReadBeforeAssign: true }],
       "no-unused-expressions": "error",
       "no-console": "warn",
       "no-undef": "error",
-      "prettier/prettier": "error",
     },
   },
 ]);
