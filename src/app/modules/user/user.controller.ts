@@ -20,6 +20,24 @@ const createAdmin = catchAsync(async (req, res) => {
   });
 });
 
+const createBuyer = catchAsync(async (req, res) => {
+  const { password, buyer: buyerData } = req.body;
+
+  const result = await UserServices.createBuyerIntoDB(
+    req.file,
+    password,
+    buyerData,
+  );
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Buyer is created succesfully",
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createAdmin,
+  createBuyer,
 };

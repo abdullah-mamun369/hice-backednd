@@ -27,7 +27,7 @@ export const sendImageToCloudinary = (imageName: string, path: string) => {
             console.log("File is deleted.");
           }
         });
-      }
+      },
     );
   });
 };
