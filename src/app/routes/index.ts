@@ -4,6 +4,7 @@ import { UserRoutes } from "../modules/user/user.route";
 import { AdminRoutes } from "../modules/Admin/admin.route";
 import { BuyerRoutes } from "../modules/Buyer/buyer.route";
 import { TrainingVideoRoutes } from "../modules/TrainingVideo/trainingVideo.route";
+import { DisclaimerRoutes } from "../modules/Disclaimer/disclaimer.route";
 
 const router = Router();
 
@@ -23,6 +24,10 @@ const moduleRoutes = [
   {
     path: "/training-videos",
     route: TrainingVideoRoutes,
+  },
+  {
+    path: "/disclaimers",
+    route: DisclaimerRoutes,
   },
 ];
 
