@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { UserRoutes } from "../modules/user/user.route";
 import { AdminRoutes } from "../modules/Admin/admin.route";
+import { BuyerRoutes } from "../modules/Buyer/buyer.route";
 
 const router = Router();
 
@@ -13,6 +14,10 @@ const moduleRoutes = [
   {
     path: "/admins",
     route: AdminRoutes,
+  },
+  {
+    path: "/buyers",
+    route: BuyerRoutes,
   },
 ];
 
