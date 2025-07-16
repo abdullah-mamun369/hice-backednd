@@ -134,7 +134,28 @@ const createBuyerIntoDB = async (
   }
 };
 
+const getMe = async (userEmail: string, role: string) => {
+  let result = null;
+  if (role === "buyer") {
+    result = await Buyer.findOne({ email: userEmail }).populate("user");
+  }
+  if (role === "admin") {
+    result = await Admin.findOne({ email: userEmail }).populate("user");
+  }
+
+  return result;
+};
+
+const changeStatus = async (id: string, payload: { status: string }) => {
+  const result = await User.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const UserServices = {
   createAdminIntoDB,
   createBuyerIntoDB,
+  getMe,
+  changeStatus,
 };

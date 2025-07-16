@@ -2,46 +2,40 @@ import express from "express";
 import { DisclaimerControllers } from "./disclaimer.controller";
 import { DisclaimerValidation } from "./disclaimer.validation";
 import validateRequest from "../../middlewares/validateRequest";
-// import auth from "../../middlewares/auth";
-// import { USER_ROLE } from "../user/user.constant";
+import auth from "../../middlewares/auth";
+import { USER_ROLE } from "../user/user.constant";
 
 const router = express.Router();
-// const adminAuth = auth(USER_ROLE.superAdmin, USER_ROLE.admin);
 
-// Create disclaimer
 router.post(
   "/create-disclaimer",
-  //   adminAuth,
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(DisclaimerValidation.createDisclaimerValidationSchema),
   DisclaimerControllers.createDisclaimer,
 );
 
-// Get all disclaimers
 router.get(
   "/",
-  // adminAuth,
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
   DisclaimerControllers.getAllDisclaimers,
 );
 
-// Get single disclaimer
 router.get(
   "/:id",
-  // adminAuth,
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   DisclaimerControllers.getSingleDisclaimer,
 );
 
-// Update disclaimer
 router.patch(
   "/:id",
-  //   adminAuth,
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(DisclaimerValidation.updateDisclaimerValidationSchema),
   DisclaimerControllers.updateDisclaimer,
 );
 
-// Delete disclaimer (soft delete or hard delete as needed)
 router.delete(
   "/:id",
-  // adminAuth,
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   DisclaimerControllers.deleteDisclaimer,
 );
 
