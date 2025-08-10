@@ -53,11 +53,20 @@ const updateDisclaimerIntoDB = async (
   return result;
 };
 
+// const deleteDisclaimerFromDB = async (id: string) => {
+//   const result = await DisclaimerModel.findByIdAndDelete(id);
+//   if (!result) {
+//     throw new AppError(httpStatus.NOT_FOUND, "Disclaimer not found");
+//   }
+//   return result;
+// };
+
 const deleteDisclaimerFromDB = async (id: string) => {
-  const result = await DisclaimerModel.findByIdAndDelete(id);
-  if (!result) {
-    throw new AppError(httpStatus.NOT_FOUND, "Disclaimer not found");
-  }
+  const result = await DisclaimerModel.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
   return result;
 };
 

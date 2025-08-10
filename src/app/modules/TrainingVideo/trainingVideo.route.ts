@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post(
   "/create-training-video",
-  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  // auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(TrainingVideoValidation.createTrainingVideoValidationSchema),
   TrainingVideoControllers.createTrainingVideo,
 );
@@ -29,7 +29,7 @@ router.patch(
 
 router.get(
   "/",
-  auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
+  // auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
   TrainingVideoControllers.getAllTrainingVideos,
 );
 

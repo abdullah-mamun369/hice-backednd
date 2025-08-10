@@ -52,7 +52,7 @@ const buyerSchema = new Schema<TBuyer, BuyerModel>(
 
 // generating full name
 buyerSchema.virtual("fullName").get(function () {
-  return this?.name?.firstName + "" + this?.name?.lastName;
+  return this?.name?.firstName + " " + this?.name?.lastName;
 });
 
 // filter out deleted documents

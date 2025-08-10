@@ -143,6 +143,10 @@ const getMe = async (userEmail: string, role: string) => {
     result = await Admin.findOne({ email: userEmail }).populate("user");
   }
 
+  if (role === "superAdmin") {
+    result = await User.findOne({ email: userEmail });
+  }
+
   return result;
 };
 

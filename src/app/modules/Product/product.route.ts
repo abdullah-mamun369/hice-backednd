@@ -25,13 +25,13 @@ router.post(
 
 router.get(
   "/",
-  auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
+  // auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
   ProductControllers.getAllProducts,
 );
 
 router.get(
   "/:id",
-  auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
+  // auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.buyer),
   ProductControllers.getSingleProduct,
 );
 
